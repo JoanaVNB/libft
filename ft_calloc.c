@@ -6,37 +6,24 @@
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 19:32:16 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/23 08:20:03 by jvidon-n         ###   ########.fr       */
+/*   Updated: 2022/04/30 23:17:58 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-#include <limits.h>
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		*((char *) s + i) = 0;
-		i++;
-	}
-}
 
 void	*ft_calloc(size_t nmemb, size_t size)
-{	
+{
 	void	*ptr;
+	size_t	size_malloc;
 
-	if (!size || !nmemb)
+	size_malloc = nmemb * size;
+	if (nmemb != 0 && size_malloc / nmemb != size)
 		return (NULL);
-	if (nmemb > INT_MAX)
-		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (ptr != NULL)
-		ft_bzero(ptr, nmemb * size);
+	ptr = (void *)malloc(size_malloc);
+	if (ptr == NULL)
+		return (ptr);
+	ft_bzero(ptr, (size_malloc));
 	return (ptr);
 }
 

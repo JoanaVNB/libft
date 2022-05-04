@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 01:03:53 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/29 02:44:39 by jvidon-n         ###   ########.fr       */
+/*   Created: 2022/04/27 21:13:45 by jvidon-n          #+#    #+#             */
+/*   Updated: 2022/04/28 00:36:38 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if ((c > 64 && c < 91) || (c > 96 && c < 123))
-		return (1);
-	else
-		return (0);
-}
+	t_list	*temp;
+	t_list	*ptr;
 
-/* int main ()
-{
-	char c;
-	c = 'a';
-	printf("Retornará maior que zero se for letra ou zero se não for.\n");
-	printf("Retorna ft_: %d\n", ft_isalpha(c));
-	printf("Retorna Orig: %d\n", isalpha(c));
-} */
+	temp = *lst;
+	while (temp)
+	{
+		ptr = temp->next;
+		del (temp->content);
+		free (temp);
+		temp = ptr;
+	}
+	*lst = 0;
+}

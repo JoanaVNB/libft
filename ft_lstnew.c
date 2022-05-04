@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 01:03:53 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/29 02:44:39 by jvidon-n         ###   ########.fr       */
+/*   Created: 2022/04/26 16:02:40 by jvidon-n          #+#    #+#             */
+/*   Updated: 2022/04/26 16:02:41 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+t_list	*ft_lstnew(void *content)
 {
-	if ((c > 64 && c < 91) || (c > 96 && c < 123))
-		return (1);
-	else
-		return (0);
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
 
-/* int main ()
+/* #include <stdio.h>
+
+int		main(void)
 {
-	char c;
-	c = 'a';
-	printf("Retornará maior que zero se for letra ou zero se não for.\n");
-	printf("Retorna ft_: %d\n", ft_isalpha(c));
-	printf("Retorna Orig: %d\n", isalpha(c));
+t_list	*new;
+new = ft_lstnew("cadete");
+printf("%s\ncontent : ", (char *) new);
 } */

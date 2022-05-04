@@ -6,12 +6,10 @@
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 00:58:41 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/23 07:44:22 by jvidon-n         ###   ########.fr       */
+/*   Updated: 2022/04/29 02:44:49 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
 #include "libft.h"
 
 int	ft_isdigit(int c)

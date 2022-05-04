@@ -6,7 +6,7 @@
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 19:13:00 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/23 08:16:33 by jvidon-n         ###   ########.fr       */
+/*   Updated: 2022/04/24 22:33:42 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (*s1 && *s2 && *s1 == *s2 && (int)n > 0)
+	while (*s1 && *s2 && *s1 == *s2 && n > 0)
 	{
 		s1++;
 		s2++;

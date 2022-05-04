@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 01:03:53 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/29 02:44:39 by jvidon-n         ###   ########.fr       */
+/*   Created: 2022/04/26 16:02:45 by jvidon-n          #+#    #+#             */
+/*   Updated: 2022/04/27 23:39:05 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+int	ft_lstsize(t_list *lst)
 {
-	if ((c > 64 && c < 91) || (c > 96 && c < 123))
-		return (1);
-	else
-		return (0);
-}
+	unsigned int	size;
 
-/* int main ()
-{
-	char c;
-	c = 'a';
-	printf("Retornará maior que zero se for letra ou zero se não for.\n");
-	printf("Retorna ft_: %d\n", ft_isalpha(c));
-	printf("Retorna Orig: %d\n", isalpha(c));
-} */
+	size = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return (size);
+}

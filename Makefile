@@ -6,7 +6,7 @@
 #    By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 04:47:36 by jvidon-n          #+#    #+#              #
-#    Updated: 2022/04/22 04:56:38 by jvidon-n         ###   ########.fr        #
+#    Updated: 2022/04/29 00:38:55 by jvidon-n         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,25 +18,34 @@ FILE = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 		 ft_putstr_fd.c ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c \
 		 ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c \
 		 ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
-		 ft_tolower.c ft_toupper.c
-GCC = cc
-FLACGS = -Wall -Wextra -Werror
+		 ft_tolower.c ft_toupper.c 
+BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
+		ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
+		ft_lstclear.c ft_lstiter.c
+
+CC = cc 
+CFLAGS = -Wall -Wextra -Werror
 OBJ = $(FILE:.c=.o)
+OBJB = $(BONUS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar -rc $(NAME) $(OBJ)
 
-%.o: $(SRCS)/%.c
-	$(GCC) $(FLAGS) -c $< -o $@
+bonus: $(OBJB)
+	ar -rc $(NAME) $(OBJB)
 
+%.o: $(SRCS)/%.c
+	$(CC) $(CFLAGS)-c $< -o $@
 clean:
-	rm -f $(OBJ)
+	rm -f *.o
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+rebonus: fclean bonus
+
+.PHONY: all clean fclean re rebonus

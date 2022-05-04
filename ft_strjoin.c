@@ -6,41 +6,11 @@
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 03:39:36 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/22 03:41:31 by jvidon-n         ###   ########.fr       */
+/*   Updated: 2022/04/29 02:46:20 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
-{
-	unsigned int	d_i;
-	unsigned int	s_i;
-
-	d_i = 0;
-	s_i = 0;
-	while (dest[d_i] != '\0')
-	{
-		d_i++;
-	}
-	while (src[s_i] != '\0' && s_i < nb)
-	{
-		dest[d_i + s_i] = src[s_i];
-		s_i++;
-	}
-	dest[d_i + s_i] = '\0';
-	return (dest);
-}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

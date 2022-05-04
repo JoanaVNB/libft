@@ -6,12 +6,10 @@
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 01:10:30 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/22 04:41:32 by jvidon-n         ###   ########.fr       */
+/*   Updated: 2022/04/29 02:44:55 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
 #include "libft.h"
 
 int	ft_isprint(int c)

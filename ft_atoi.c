@@ -6,19 +6,11 @@
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 19:24:24 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/23 07:45:00 by jvidon-n         ###   ########.fr       */
+/*   Updated: 2022/04/29 02:43:46 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_isdigit(int c)
-{
-	if (c > 47 && c < 58)
-		return (1);
-	else
-		return (0);
-}
 
 int	ft_atoi(const char *str)
 {

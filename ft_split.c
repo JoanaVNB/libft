@@ -6,42 +6,46 @@
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 02:29:53 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/22 16:40:32 by jvidon-n         ###   ########.fr       */
+/*   Updated: 2022/04/29 02:23:11 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	unleah(char **str, int size)
+static int	freestr(char **str, int size)
 {
 	while (size--)
 		free(str[size]);
 	return (-1);
 }
 
-static int	count_words(const char *str, char charset)
+static int	count_words(const char *str, char c)
 {
 	int	i;
-	int	words;
+	int	trigger;
 
-	words = 0;
 	i = 0;
-	while (str[i] != '\0')
+	trigger = 0;
+	while (*str)
 	{
-		if ((str[i + 1] == charset || str[i + 1] == '\0') == 1
-			&& (str[i] == charset || str[i] == '\0') == 0)
-			words++;
-		i++;
+		if (*str != c && trigger == 0)
+		{
+			trigger = 1;
+			i++;
+		}
+		else if (*str == c)
+			trigger = 0;
+		str++;
 	}
-	return (words);
+	return (i);
 }
 
-static void	write_word(char *dest, const char *from, char charset)
+static void	copy(char *dest, const char *from, char c)
 {
 	int	i;
 
 	i = 0;
-	while ((from[i] == charset || from[i] == '\0') == 0)
+	while ((from[i] == c || from[i] == '\0') == 0)
 	{
 		dest[i] = from[i];
 		i++;
@@ -49,7 +53,7 @@ static void	write_word(char *dest, const char *from, char charset)
 	dest[i] = '\0';
 }
 
-static int	write_split(char **split, const char *str, char charset)
+static int	write_split(char **split, const char *str, char c)
 {
 	int		i;
 	int		j;
@@ -59,19 +63,19 @@ static int	write_split(char **split, const char *str, char charset)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if ((str[i] == charset || str[i] == '\0') == 1)
+		if (str[i] == c || str[i] == '\0')
 			i++;
 		else
 		{
 			j = 0;
-			while ((str[i + j] == charset || str[i + j] == '\0') == 0)
+			while ((str[i + j] == c || str[i + j] == '\0') == 0)
 				j++;
 			split[word] = (char *) malloc (sizeof (char) * (j + 1));
 			if (!split[word])
-				return (unleah(split, word - 1));
-			write_word(split[word], str + i, charset);
-			i += j;
-			word++;
+				return (freestr(split, word - 1));
+			copy(split[word], str + i, c);
+				i = i + j;
+				word++;
 		}
 	}
 	return (0);
@@ -79,24 +83,22 @@ static int	write_split(char **split, const char *str, char charset)
 
 char	**ft_split(const char *str, char c)
 {
-	char	**res;
-	int		words;
+	char	**split;
 
-	words = count_words(str, c);
-	res = (char **) malloc (sizeof (char *) * (words + 1));
-	if (!res)
+	split = (char **) malloc (sizeof (char *) * (count_words(str, c) + 1));
+	if (!split)
 		return (NULL);
-	res[words] = 0;
-	if (write_split(res, str, c) == -1)
+	split[count_words(str, c)] = 0;
+	if (write_split(split, str, c) == -1)
 		return (NULL);
-	return (res);
+	return (split);
 }
 
-//#include <stdio.h>
+/* #include <stdio.h>
 
-/* int main ()
+int main ()
 {
-	char const *s = "cadete da 42";
+	char const *s = "a cadete da 42";
 	char c = 'a';
 	char **res; 
 

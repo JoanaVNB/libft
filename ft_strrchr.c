@@ -6,7 +6,7 @@
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 04:16:33 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/22 04:20:17 by jvidon-n         ###   ########.fr       */
+/*   Updated: 2022/04/24 22:20:13 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
-	int		j;
+	const char	*s_end;
 
-	i = 0;
-	j = -1;
-	while (s[i] != '\0')
+	s_end = s;
+	while (*s_end)
+		s_end++;
+	while (s_end != s)
 	{
-		if (s[i] == c)
-			j = i;
-		i++;
+		if (*s_end == (char) c)
+			return ((char *)s_end);
+		else
+			s_end--;
 	}
-	if (c == '\0')
-		return ((char *)&s[i]);
-	if (j == -1)
-		return (0);
-	return ((char *)&s[j]);
+	if (*s_end == (char) c)
+		return ((char *) s_end);
+	else
+		return (NULL);
 }
 
 /* #include <string.h>

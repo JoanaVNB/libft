@@ -6,12 +6,10 @@
 /*   By: jvidon-n <joanavidon@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 01:05:28 by jvidon-n          #+#    #+#             */
-/*   Updated: 2022/04/22 01:39:12 by jvidon-n         ###   ########.fr       */
+/*   Updated: 2022/04/29 02:44:45 by jvidon-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
 #include "libft.h"
 
 int	ft_isascii(int c)
